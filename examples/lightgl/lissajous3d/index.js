@@ -23,6 +23,11 @@ gl.ondraw = function() {
     //      +1.0 /  |
     //           -1.0
     // 
+
+    // x = sin(2 * pi / 360 * t1 + alpha)
+    // y = sin(2 * pi / 360 * t2 + beta)
+    // z = sin(2 * pi / 360 * t3 + gamma)
+
     var MAX = 360;
     var A = 100.0;
     var B = 99.0;

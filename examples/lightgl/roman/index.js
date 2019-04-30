@@ -23,6 +23,11 @@ gl.ondraw = function() {
     //      +1.0 /  |
     //           -1.0
     // 
+
+    // x = sin(u) * cos(u) * sin(v) * sin(v)
+    // y = sin(u) * sin(v) * cos(v)
+    // z = cos(u) * sin(v) * cos(v)
+
     gl.begin(gl.LINE_STRIP);
     var ustep = Math.PI * 10 / 180;
     var vstep = Math.PI * 10 / 180;

@@ -22,7 +22,15 @@ gl.ondraw = function() {
     //            / |
     //      +1.0 /  |
     //           -1.0
+    //
+     
+    // x = (R + r cos(v)) cos(u)
+    // y = (R + r cos(v)) sin(u)
+    // z = r sin(v)
     // 
+    // u is an element of the set of numbers [0, 2 pi]
+    // v is an element of the set of numbers [0, 2 pi]
+    
     gl.begin(gl.POINTS);
     gl.pointSize(2.0);
     var ustep = Math.PI * 5 / 180;

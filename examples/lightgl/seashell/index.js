@@ -24,6 +24,15 @@ gl.ondraw = function() {
     //      +1.0 /  |
     //           -1.0
     // 
+
+    // x = (a*(1-v/(2*pi))*(1+cos(u)) + c) * cos(n*v)
+    // y = (a*(1-v/(2*pi))*(1+cos(u)) + c) * sin(n*v)
+    // z = b*v/(2*pi) + a*(1-v/(2*pi)) * sin(u)
+    // 
+    // a,b: these determine how pointy or flat the shell is (informally...)
+    // c: determines how much the shell overlaps with itself
+    // n: the number of spirals in the shell
+
     gl.begin(gl.POINTS);
     gl.pointSize(2.0);
     var ustep = Math.PI * 5 / 180;

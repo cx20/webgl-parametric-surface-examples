@@ -23,6 +23,14 @@ gl.ondraw = function() {
     //      +1.0 /  |
     //           -1.0
     // 
+
+    // x = cos (u) (4 + 3.8 cos (v))
+    // y = sin (u) (4 + 3.8 cos (v))
+    // z = (cos (v) + sin (v) -1) (1 + sin (v)) log (1-pi v / 10) +7.5 sin (v)
+    // 
+    // u is an element of the set of numbers [0, 2 pi]
+    // v is an element of the set of numbers [-pi, pi]
+
     gl.begin(gl.LINE_STRIP);
     var ustep = Math.PI * 5 / 180;
     var vstep = Math.PI * 5 / 180;
