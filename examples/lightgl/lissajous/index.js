@@ -12,26 +12,7 @@ gl.ondraw = function() {
     gl.rotate(30, 1, 0, 0);
     gl.rotate(angle, 0, 1, 0);
 
-    // Prepare coordinate data of sine wave ~ cosine wave
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
-    // 
-    //             [3]
-    //         [4]     [2]
-    //      [5]            [1]
-    //      *                *
-    //     [6]              [0]
-    //      *                *
-    //      [7]            [11]
-    //         [8]     [10]
-    //             [9]
-    //
+    // Prepare coordinate data of sine wave * cosine wave
     var data = [];
     var MAX = 24;
     var A = 1.0;

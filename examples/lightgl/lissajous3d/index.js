@@ -14,15 +14,6 @@ gl.ondraw = function() {
     gl.rotate(angle, 0, 1, 0);
 
     // Prepare coordinate data of 3D Lissajous
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
-    // 
 
     // x = sin(2 * pi / 360 * t1 + alpha)
     // y = sin(2 * pi / 360 * t2 + beta)

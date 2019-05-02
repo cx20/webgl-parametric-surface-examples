@@ -13,15 +13,6 @@ gl.ondraw = function() {
     gl.rotate(angle, angle, angle/10, 1);
 
     // Prepare coordinate data of heart surface
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
-    // 
     //gl.begin(gl.LINE_STRIP);
     gl.begin(gl.POINTS);
     gl.pointSize(2.0);

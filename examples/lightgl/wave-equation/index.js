@@ -47,7 +47,7 @@ function initialCondition(parameter) {
             for (j = 0; j <= N; j++) {
                 var x = (-N / 2 + i) * l;
                 var y = (-N / 2 + j) * l;
-                //‰ŠúðŒ‚ð—^‚¦‚é
+                // initial conditions
                 var z = z0 * Math.exp(-(Math.pow(x - x0, 2) + Math.pow(y - y0, 2)) / (2 * sigma2));
                 f[0][i][j] = z;
             }

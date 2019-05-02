@@ -14,15 +14,6 @@ gl.ondraw = function() {
     gl.rotate(angle, 0, 0, 1);
 
     // Prepare coordinate data of Roman surface
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
-    // 
 
     // x = sin(u) * cos(u) * sin(v) * sin(v)
     // y = sin(u) * sin(v) * cos(v)

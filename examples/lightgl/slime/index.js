@@ -14,15 +14,9 @@ gl.ondraw = function() {
     gl.rotate(angle, angle, angle, 1);
 
     // Prepare slime coordinate data
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
-    // 
+	// x = b (cos(v) (r + sin(v))) cos(u)
+	// y = a (r + sin(v))
+	// z = b (cos(v) (r + sin(v))) sin(u)
     gl.begin(gl.LINE_STRIP);
     //gl.begin(gl.POINTS);
     gl.pointSize(2.0);

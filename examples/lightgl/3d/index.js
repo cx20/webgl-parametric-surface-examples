@@ -14,16 +14,7 @@ gl.ondraw = function() {
     gl.rotate(-60, 1, 0, 0);
     gl.rotate(angle, 0, 0, 1);
 
-    // 3次元関数の座標データを用意
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
-    // 
+    // Plot a three-dimensional function
     gl.begin(gl.POINTS);
     gl.pointSize(2.0);
     for ( var j = -10; j < 10; j += 0.2 ) {

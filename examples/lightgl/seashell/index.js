@@ -15,15 +15,6 @@ gl.ondraw = function() {
     gl.rotate(angle, 0, 0, -1);
 
     // Prepare coordinate data of seashell surface
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
-    // 
 
     // x = (a*(1-v/(2*pi))*(1+cos(u)) + c) * cos(n*v)
     // y = (a*(1-v/(2*pi))*(1+cos(u)) + c) * sin(n*v)

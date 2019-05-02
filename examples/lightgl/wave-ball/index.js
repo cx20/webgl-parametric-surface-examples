@@ -14,14 +14,6 @@ gl.ondraw = function() {
     gl.rotate(angle, angle, angle, 1);
 
     // Prepare coordinate data of Wave Ball
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
     // 
 
     // Wellenkugel

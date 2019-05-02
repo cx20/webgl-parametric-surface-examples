@@ -14,15 +14,6 @@ gl.ondraw = function() {
     gl.rotate(angle, angle, angle, 1);
 
     // Prepare torus coordinate data
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
-    //
      
     // x = (R + r cos(v)) cos(u)
     // y = (R + r cos(v)) sin(u)
