@@ -1,5 +1,5 @@
 function sketchProc(p) {
-    var angle = 0.0;
+    let angle = 0.0;
 
     p.setup = function() {
         p.size(innerWidth,innerHeight, p.P3D);
@@ -15,14 +15,14 @@ function sketchProc(p) {
         p.scale(Math.min(p.width/2.0, p.height/2.0));
 
         // Prepare coordinate data of sine wave * cosine wave
-        var MAX = 24;
-        var A = 1.0;
-        var B = 2.0;
+        let MAX = 24;
+        let A = 1.0;
+        let B = 2.0;
         p.beginShape(p.LINE_STRIP);
-        for ( var i = 0; i <= MAX; i++ ) {
-            var x = 0.5 * Math.cos(2 * Math.PI * i / MAX * A);
-            var y = 0.5 * Math.sin(2 * Math.PI * i / MAX * B);
-            var z = 0.5 * Math.sin(2 * Math.PI * i / MAX * A);
+        for ( let i = 0; i <= MAX; i++ ) {
+            let x = 0.5 * Math.cos(2 * Math.PI * i / MAX * A);
+            let y = 0.5 * Math.sin(2 * Math.PI * i / MAX * B);
+            let z = 0.5 * Math.sin(2 * Math.PI * i / MAX * A);
             p.stroke((x+0.5)*255, (y+0.5)*255, (z+0.5)*255);
             p.vertex(x, y, z);
         }
@@ -31,7 +31,7 @@ function sketchProc(p) {
 }
 
 window.onload = function () {
-    var canvas = document.getElementById("canvas");
-    var myp = new Processing(canvas, sketchProc);
+    let canvas = document.getElementById("canvas");
+    let myp = new Processing(canvas, sketchProc);
 }
 

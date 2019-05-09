@@ -1,5 +1,5 @@
 function sketchProc(p) {
-    var angle = 0.0;
+    let angle = 0.0;
 
     p.setup = function() {
         p.size(innerWidth,innerHeight, p.P3D);
@@ -26,15 +26,15 @@ function sketchProc(p) {
 
         p.beginShape(p.POINTS);
         p.strokeWeight(2.0);
-        var ustep = Math.PI * 5 / 180;
-        var vstep = Math.PI * 5 / 180;
-        var R = 0.5;
-        var r = 0.2;
-        for (var v = 0; v <= 2 * Math.PI; v += vstep) {
-            for (var u = 0; u <= 2 * Math.PI; u += ustep) {
-                var x = (R + r * Math.cos(v)) * Math.cos(u);
-                var y = (R + r * Math.cos(v)) * Math.sin(u);
-                var z = r * Math.sin(v);
+        let ustep = Math.PI * 5 / 180;
+        let vstep = Math.PI * 5 / 180;
+        let R = 0.5;
+        let r = 0.2;
+        for (let v = 0; v <= 2 * Math.PI; v += vstep) {
+            for (let u = 0; u <= 2 * Math.PI; u += ustep) {
+                let x = (R + r * Math.cos(v)) * Math.cos(u);
+                let y = (R + r * Math.cos(v)) * Math.sin(u);
+                let z = r * Math.sin(v);
                 p.stroke((x+0.5)*255, (y+0.5)*255, (z+0.5)*255);
                 p.vertex(x, y, z);
             }
@@ -45,6 +45,6 @@ function sketchProc(p) {
 }
 
 window.onload = function () {
-    var canvas = document.getElementById("canvas");
-    var myp = new Processing(canvas, sketchProc);
+    let canvas = document.getElementById("canvas");
+    let myp = new Processing(canvas, sketchProc);
 }

@@ -1,5 +1,5 @@
-var angle = 0;
-var gl = GL.create();
+let angle = 0;
+let gl = GL.create();
 
 gl.onupdate = function(seconds) {
     angle += 45 * seconds;
@@ -20,10 +20,10 @@ gl.ondraw = function() {
     // z = cos(u) * sin(v) * cos(v)
 
     gl.begin(gl.LINE_STRIP);
-    var ustep = Math.PI * 10 / 180;
-    var vstep = Math.PI * 10 / 180;
-    for (var v = 0; v <= 2 * Math.PI; v += vstep) {
-        for (var u = 0; u <= 2 * Math.PI; u += ustep) {
+    let ustep = Math.PI * 10 / 180;
+    let vstep = Math.PI * 10 / 180;
+    for (let v = 0; v <= 2 * Math.PI; v += vstep) {
+        for (let u = 0; u <= 2 * Math.PI; u += ustep) {
             RomanSurface(u, v);
             RomanSurface(u + ustep, v);
             RomanSurface(u + ustep, v + vstep);
@@ -34,9 +34,9 @@ gl.ondraw = function() {
 };
 
 function RomanSurface(u, v) {
-    var x = Math.sin(u) * Math.cos(u) * Math.sin(v) * Math.sin(v);
-    var y = Math.sin(u) * Math.sin(v) * Math.cos(v);
-    var z = Math.cos(u) * Math.sin(v) * Math.cos(v);
+    let x = Math.sin(u) * Math.cos(u) * Math.sin(v) * Math.sin(v);
+    let y = Math.sin(u) * Math.sin(v) * Math.cos(v);
+    let z = Math.cos(u) * Math.sin(v) * Math.cos(v);
     gl.color(x + 0.5, y + 0.5, z + 0.5, 1.0);
     gl.vertex(x, y, z);
 }

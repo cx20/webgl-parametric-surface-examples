@@ -1,5 +1,5 @@
-var angle = 0;
-var gl = GL.create();
+let angle = 0;
+let gl = GL.create();
 
 gl.onupdate = function(seconds) {
     angle += 45 * seconds;
@@ -28,16 +28,16 @@ gl.ondraw = function() {
 
     gl.begin(gl.POINTS);
     gl.pointSize(1.0);
-    var ustep = 0.1;
-    var vstep = Math.PI * 5 / 180;
-    for (var v = 0; v <= 2 * Math.PI; v += vstep) {
-        for (var u = 0; u <= 14.5; u += ustep) {
-            var x = u * Math.cos(Math.cos(u)) * Math.cos(v);
-            var y = u * Math.cos(Math.cos(u)) * Math.sin(v);
-            var z = u * Math.sin(Math.cos(u));
-            var x2 = x/25;
-            var y2 = y/25;
-            var z2 = z/25;
+    let ustep = 0.1;
+    let vstep = Math.PI * 5 / 180;
+    for (let v = 0; v <= 2 * Math.PI; v += vstep) {
+        for (let u = 0; u <= 14.5; u += ustep) {
+            let x = u * Math.cos(Math.cos(u)) * Math.cos(v);
+            let y = u * Math.cos(Math.cos(u)) * Math.sin(v);
+            let z = u * Math.sin(Math.cos(u));
+            let x2 = x/25;
+            let y2 = y/25;
+            let z2 = z/25;
             gl.color(x2 + 0.5, y2 + 0.5, z2 + 0.5, 1.0);
             gl.vertex(x2, y2, z2);
         }
