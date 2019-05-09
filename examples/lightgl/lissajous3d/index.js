@@ -1,5 +1,5 @@
-var angle = 0;
-var gl = GL.create();
+let angle = 0;
+let gl = GL.create();
 
 gl.onupdate = function(seconds) {
     angle += 45 * seconds;
@@ -19,18 +19,18 @@ gl.ondraw = function() {
     // y = sin(2 * pi / 360 * t2 + beta)
     // z = sin(2 * pi / 360 * t3 + gamma)
 
-    var MAX = 360;
-    var A = 100.0;
-    var B = 99.0;
-    var C = 1.0;
-    var alpha = Math.PI/4;
-    var beta  = Math.PI/3;
-    var theta = 0; // Math.PI/2;
+    let MAX = 360;
+    let A = 100.0;
+    let B = 99.0;
+    let C = 1.0;
+    let alpha = Math.PI/4;
+    let beta  = Math.PI/3;
+    let theta = 0; // Math.PI/2;
     gl.begin(gl.LINE_STRIP);
-    for ( var i = 0; i <= MAX; i += 0.1 ) {
-        var x = 0.5 * Math.sin(2 * Math.PI * i / MAX * A + alpha);
-        var y = 0.5 * Math.sin(2 * Math.PI * i / MAX * B + beta);
-        var z = 0.5 * Math.sin(2 * Math.PI * i / MAX * C + theta);
+    for ( let i = 0; i <= MAX; i += 0.1 ) {
+        let x = 0.5 * Math.sin(2 * Math.PI * i / MAX * A + alpha);
+        let y = 0.5 * Math.sin(2 * Math.PI * i / MAX * B + beta);
+        let z = 0.5 * Math.sin(2 * Math.PI * i / MAX * C + theta);
         gl.color(x+0.5, y+0.5, z+0.5, 1.0);
         gl.vertex(x, y, z);
     }

@@ -1,5 +1,5 @@
 function sketchProc(p) {
-    var angle = 0.0;
+    let angle = 0.0;
 
     p.setup = function() {
         p.size(innerWidth,innerHeight, p.P3D);
@@ -18,18 +18,18 @@ function sketchProc(p) {
         //p.beginShape(p.LINE_STRIP);
         p.beginShape(p.POINTS);
         p.strokeWeight(2.0);
-        var num = 16;
-        for (var i = -Math.PI * num; i <= Math.PI * num; i++) {
-            for (var j = -num; j <= num; j++) {
-                var theta = i / num;
-                var z0 = j / num;
-                var r = 4 * Math.sqrt(1 - z0 * z0) * Math.pow(Math.sin(Math.abs(theta)), Math.abs(theta));
-                var x1 = r * Math.sin(theta);
-                var y1 = r * Math.cos(theta);
-                var z1 = z0;
-                var x2 = x1 / 8;
-                var y2 = y1 / 8;
-                var z2 = z1 / 8;
+        let num = 16;
+        for (let i = -Math.PI * num; i <= Math.PI * num; i++) {
+            for (let j = -num; j <= num; j++) {
+                let theta = i / num;
+                let z0 = j / num;
+                let r = 4 * Math.sqrt(1 - z0 * z0) * Math.pow(Math.sin(Math.abs(theta)), Math.abs(theta));
+                let x1 = r * Math.sin(theta);
+                let y1 = r * Math.cos(theta);
+                let z1 = z0;
+                let x2 = x1 / 8;
+                let y2 = y1 / 8;
+                let z2 = z1 / 8;
                 p.stroke((x2+1.0)*255, (y2+0.5)*255, (z2+0.5)*255);
                 p.vertex(x2, y2, z2);
             }
@@ -40,6 +40,6 @@ function sketchProc(p) {
 }
 
 window.onload = function () {
-    var canvas = document.getElementById("canvas");
-    var myp = new Processing(canvas, sketchProc);
+    let canvas = document.getElementById("canvas");
+    let myp = new Processing(canvas, sketchProc);
 }

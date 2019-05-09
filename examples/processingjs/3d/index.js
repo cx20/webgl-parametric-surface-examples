@@ -1,6 +1,6 @@
 function sketchProc(p) {
-    var angle = 0.0;
-    var theta = 0.0;
+    let angle = 0.0;
+    let theta = 0.0;
 
     p.setup = function() {
         p.size(innerWidth,innerHeight, p.P3D);
@@ -19,14 +19,14 @@ function sketchProc(p) {
 
         // Plot a three-dimensional function
         p.beginShape(p.POINTS);
-        for ( var j = -10; j < 10; j += 0.2 ) {
-            for ( var i = -10; i < 10; i += 0.2) {
-                var x = i;
-                var y = j;
-                var z = Math.sin(Math.sqrt(x*x+y*y) + theta)/Math.sqrt(x*x+y*y);
-                var x2 = x / 10;
-                var y2 = y / 10;
-                var z2 = z / 2;
+        for ( let j = -10; j < 10; j += 0.2 ) {
+            for ( let i = -10; i < 10; i += 0.2) {
+                let x = i;
+                let y = j;
+                let z = Math.sin(Math.sqrt(x*x+y*y) + theta)/Math.sqrt(x*x+y*y);
+                let x2 = x / 10;
+                let y2 = y / 10;
+                let z2 = z / 2;
                 p.stroke((x2+0.5)*255, (y2+0.5)*255, (z2+0.5)*255);
                 p.vertex(x2, y2, z2);
             }
@@ -36,6 +36,6 @@ function sketchProc(p) {
 }
 
 window.onload = function () {
-    var canvas = document.getElementById("canvas");
-    var myp = new Processing(canvas, sketchProc);
+    let canvas = document.getElementById("canvas");
+    let myp = new Processing(canvas, sketchProc);
 }

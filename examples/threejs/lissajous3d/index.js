@@ -1,7 +1,8 @@
-var container;
-var camera, scene, renderer;
-var mesh;
-var theta = 0;
+let container;
+let camera, scene, renderer;
+let mesh;
+let theta = 0;
+let rad = 0.0;
 
 init();
 animate();
@@ -12,24 +13,24 @@ function init() {
     camera.position.z = 3.5;
     scene = new THREE.Scene();
 
-    var MAX = 360;
-    var A = 100.0;
-    var B = 99.0;
-    var C = 1.0;
-    var alpha = Math.PI/4;
-    var beta  = Math.PI/3;
-    var theta = 0; // Math.PI/2;
+    let MAX = 360;
+    let A = 100.0;
+    let B = 99.0;
+    let C = 1.0;
+    let alpha = Math.PI/4;
+    let beta  = Math.PI/3;
+    let theta = 0; // Math.PI/2;
 
-    var geometry = new THREE.BufferGeometry();
-    var positions = new Float32Array((MAX*10+1) * 3);
-    var colors = new Float32Array((MAX*10+1) * 3);
-    var indices = new Uint16Array((MAX*10+1) * 1);
+    let geometry = new THREE.BufferGeometry();
+    let positions = new Float32Array((MAX*10+1) * 3);
+    let colors = new Float32Array((MAX*10+1) * 3);
+    let indices = new Uint16Array((MAX*10+1) * 1);
 
-    var k = 0;
-    for ( var i = 0; i <= MAX; i += 0.1 ) {
-        var x = 0.5 * Math.sin(2 * Math.PI * i / MAX * A + alpha);
-        var y = 0.5 * Math.sin(2 * Math.PI * i / MAX * B + beta);
-        var z = 0.5 * Math.sin(2 * Math.PI * i / MAX * C + theta);
+    let k = 0;
+    for ( let i = 0; i <= MAX; i += 0.1 ) {
+        let x = 0.5 * Math.sin(2 * Math.PI * i / MAX * A + alpha);
+        let y = 0.5 * Math.sin(2 * Math.PI * i / MAX * B + beta);
+        let z = 0.5 * Math.sin(2 * Math.PI * i / MAX * C + theta);
         positions[k * 3 + 0] = x;
         positions[k * 3 + 1] = y;
         positions[k * 3 + 2] = z;
@@ -47,7 +48,7 @@ function init() {
     geometry.addAttribute('color', new THREE.BufferAttribute(colors, 3));
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     
-    var material = new THREE.LineBasicMaterial({
+    let material = new THREE.LineBasicMaterial({
         vertexColors: THREE.VertexColors
     });
     mesh = new THREE.Line(geometry, material, THREE.LineStrip);
@@ -65,7 +66,6 @@ function animate() {
     render();
 }
 
-var rad = 0.0;
 function render() {
     rad += Math.PI * 1.0 / 180.0
     mesh.rotation.y = rad;

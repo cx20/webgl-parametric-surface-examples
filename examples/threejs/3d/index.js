@@ -1,7 +1,8 @@
-var container;
-var camera, scene, renderer;
-var mesh;
-var theta = 0;
+let container;
+let camera, scene, renderer;
+let mesh;
+let theta = 0;
+let rad = 0.0;
 
 init();
 animate();
@@ -12,22 +13,22 @@ function init() {
     camera.position.z = 3.5;
     scene = new THREE.Scene();
 
-    var WIDTH_SEGMENT = 100;
-    var HEIGHT_SEGMENT = 100;
+    let WIDTH_SEGMENT = 100;
+    let HEIGHT_SEGMENT = 100;
 
-    var geometry = new THREE.BufferGeometry();
-    var positions = new Float32Array((WIDTH_SEGMENT + 1) * (HEIGHT_SEGMENT + 1) * 3);
-    var colors = new Float32Array((WIDTH_SEGMENT + 1) * (HEIGHT_SEGMENT + 1) * 3);
+    let geometry = new THREE.BufferGeometry();
+    let positions = new Float32Array((WIDTH_SEGMENT + 1) * (HEIGHT_SEGMENT + 1) * 3);
+    let colors = new Float32Array((WIDTH_SEGMENT + 1) * (HEIGHT_SEGMENT + 1) * 3);
 
-    var k = 0;
-    for (var j = -10; j < 10; j += 0.2) {
-        for (var i = -10; i < 10; i += 0.2) {
-            var x = i;
-            var y = j;
-            var z = Math.sin(Math.sqrt(x * x + y * y) + theta) / Math.sqrt(x * x + y * y);
-            var x2 = x / 10;
-            var y2 = y / 10;
-            var z2 = z / 2;
+    let k = 0;
+    for (let j = -10; j < 10; j += 0.2) {
+        for (let i = -10; i < 10; i += 0.2) {
+            let x = i;
+            let y = j;
+            let z = Math.sin(Math.sqrt(x * x + y * y) + theta) / Math.sqrt(x * x + y * y);
+            let x2 = x / 10;
+            let y2 = y / 10;
+            let z2 = z / 2;
             positions[k * 3 + 0] = x2;
             positions[k * 3 + 1] = y2;
             positions[k * 3 + 2] = z2;
@@ -43,8 +44,8 @@ function init() {
     geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.addAttribute('color', new THREE.BufferAttribute(colors, 3));
     
-    //var material = new THREE.PointsMaterial( { size: 1.0, vertexColors: THREE.VertexColors } );
-    var material = new THREE.PointsMaterial( { size: 0.05, vertexColors: THREE.VertexColors } );
+    //let material = new THREE.PointsMaterial( { size: 1.0, vertexColors: THREE.VertexColors } );
+    let material = new THREE.PointsMaterial( { size: 0.05, vertexColors: THREE.VertexColors } );
 
     mesh = new THREE.Points( geometry, material );
 
@@ -63,7 +64,6 @@ function animate() {
     render();
 }
 
-var rad = 0.0;
 function render() {
     rad += Math.PI * 1.0 / 180.0
     mesh.rotation.z = rad;

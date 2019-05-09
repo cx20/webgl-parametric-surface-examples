@@ -1,5 +1,5 @@
 function sketchProc(p) {
-    var angle = 0.0;
+    let angle = 0.0;
 
     p.setup = function() {
         p.size(innerWidth,innerHeight, p.P3D);
@@ -20,18 +20,18 @@ function sketchProc(p) {
         // y = sin(2 * pi / 360 * t2 + beta)
         // z = sin(2 * pi / 360 * t3 + gamma)
 
-        var MAX = 360;
-        var A = 100.0;
-        var B = 99.0;
-        var C = 1.0;
-        var alpha = Math.PI/4;
-        var beta  = Math.PI/3;
-        var theta = 0; // Math.PI/2;
+        let MAX = 360;
+        let A = 100.0;
+        let B = 99.0;
+        let C = 1.0;
+        let alpha = Math.PI/4;
+        let beta  = Math.PI/3;
+        let theta = 0; // Math.PI/2;
         p.beginShape(p.LINE_STRIP);
-        for ( var i = 0; i <= MAX; i += 0.1 ) {
-            var x = 0.5 * Math.sin(2 * Math.PI * i / MAX * A + alpha);
-            var y = 0.5 * Math.sin(2 * Math.PI * i / MAX * B + beta);
-            var z = 0.5 * Math.sin(2 * Math.PI * i / MAX * C + theta);
+        for ( let i = 0; i <= MAX; i += 0.1 ) {
+            let x = 0.5 * Math.sin(2 * Math.PI * i / MAX * A + alpha);
+            let y = 0.5 * Math.sin(2 * Math.PI * i / MAX * B + beta);
+            let z = 0.5 * Math.sin(2 * Math.PI * i / MAX * C + theta);
             p.stroke((x+0.5)*255, (y+0.5)*255, (z+0.5)*255);
             p.vertex(x, y, z);
         }
@@ -40,7 +40,7 @@ function sketchProc(p) {
 }
 
 window.onload = function () {
-    var canvas = document.getElementById("canvas");
-    var myp = new Processing(canvas, sketchProc);
+    let canvas = document.getElementById("canvas");
+    let myp = new Processing(canvas, sketchProc);
 }
 

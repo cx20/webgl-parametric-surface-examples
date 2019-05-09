@@ -1,18 +1,18 @@
-var scene, camera, renderer;
+let scene, camera, renderer;
 
-var MAX = 10000;
-var geometry = new THREE.BufferGeometry();
-var positions = new Float32Array(MAX * 3);
-var colors = new Float32Array(MAX * 3);
-var indices = new Uint16Array(MAX * 1);
-var line;
-var theta = 0;
+let MAX = 10000;
+let geometry = new THREE.BufferGeometry();
+let positions = new Float32Array(MAX * 3);
+let colors = new Float32Array(MAX * 3);
+let indices = new Uint16Array(MAX * 1);
+let line;
+let theta = 0;
 
-var p1 = 0;
-var A1 = 50, f1 = 2, p1 = 1/16, d1 = 0.02;
-var A2 = 50, f2 = 2, p2 = 3 / 2, d2 = 0.0315;
-var A3 = 50, f3 = 2, p3 = 13 / 15, d3 = 0.02;
-var A4 = 50, f4 = 2, p4 = 1, d4 = 0.02;
+let p1 = 0;
+let A1 = 50, f1 = 2, p1 = 1/16, d1 = 0.02;
+let A2 = 50, f2 = 2, p2 = 3 / 2, d2 = 0.0315;
+let A3 = 50, f3 = 2, p3 = 13 / 15, d3 = 0.02;
+let A4 = 50, f4 = 2, p4 = 1, d4 = 0.02;
 
 init();
 animate();
@@ -31,14 +31,14 @@ function init() {
 
 function initHarmonograph()
 {
-    for (var i = 0; i < MAX; i++) {
+    for (let i = 0; i < MAX; i++) {
         indices[i] = i;
     }
     geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.addAttribute('color', new THREE.BufferAttribute(colors, 3));
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
 
-    var material = new THREE.LineBasicMaterial({vertexColors: THREE.VertexColors});
+    let material = new THREE.LineBasicMaterial({vertexColors: THREE.VertexColors});
     line = new THREE.Line(geometry, material, THREE.LineStrip);
     scene.add(line);
 }
@@ -54,10 +54,10 @@ function randomHarmonograph() {
 
 function drawHarmonograph()
 {
-    var x, y, z;
-    var t = 0.0;
-    var color = new THREE.Color();
-    for (var i = 0; i < MAX; i++) {
+    let x, y, z;
+    let t = 0.0;
+    let color = new THREE.Color();
+    for (let i = 0; i < MAX; i++) {
         x = A1 * Math.sin(f1 * t + Math.PI * p1) * Math.exp(-d1 * t) + A2 * Math.sin(f2 * t + Math.PI * p2) * Math.exp(-d2 * t);
         y = A3 * Math.sin(f3 * t + Math.PI * p3) * Math.exp(-d3 * t) + A4 * Math.sin(f4 * t + Math.PI * p4) * Math.exp(-d4 * t);
         z = A1 * Math.cos(f1 * t + Math.PI * p1) * Math.exp(-d1 * t) + A2 * Math.cos(f2 * t + Math.PI * p2) * Math.exp(-d2 * t);
@@ -84,7 +84,7 @@ function render() {
     randomHarmonograph();
 
     camera.lookAt( scene.position );
-    camera.position.x = 200 * Math.sin( theta * Math.PI / 180 ) * -1; // ‹t‰ñ“]
+    camera.position.x = 200 * Math.sin( theta * Math.PI / 180 ) * -1; // ï¿½tï¿½ï¿½]
     camera.position.y = 200 * Math.sin( 10 * Math.PI / 180 );
     camera.position.z = 200 * Math.cos( theta * Math.PI / 180 );
     

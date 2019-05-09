@@ -1,5 +1,5 @@
-var angle = 0;
-var gl = GL.create();
+let angle = 0;
+let gl = GL.create();
 
 gl.onupdate = function(seconds) {
     angle += 45 * seconds;
@@ -23,16 +23,16 @@ gl.ondraw = function() {
     // v is an element of the set of numbers [-pi, pi]
 
     gl.begin(gl.LINE_STRIP);
-    var ustep = Math.PI * 5 / 180;
-    var vstep = Math.PI * 5 / 180;
-    for (var v = -Math.PI; v <= Math.PI; v += vstep) {
-        for (var u = 0; u <= 2 * Math.PI; u += ustep) {
-            var x = Math.cos(u) * (4 + 3.8 * Math.cos(v));
-            var y = Math.sin(u) * (4 + 3.8 * Math.cos(v));
-            var z = (Math.cos(v)+Math.sin(v)-1) * (1+Math.sin(v)) * Math.log(1-Math.PI * v/10)+7.5 * Math.sin(v);
-            var x2 = x/20;
-            var y2 = y/20;
-            var z2 = z/20;
+    let ustep = Math.PI * 5 / 180;
+    let vstep = Math.PI * 5 / 180;
+    for (let v = -Math.PI; v <= Math.PI; v += vstep) {
+        for (let u = 0; u <= 2 * Math.PI; u += ustep) {
+            let x = Math.cos(u) * (4 + 3.8 * Math.cos(v));
+            let y = Math.sin(u) * (4 + 3.8 * Math.cos(v));
+            let z = (Math.cos(v)+Math.sin(v)-1) * (1+Math.sin(v)) * Math.log(1-Math.PI * v/10)+7.5 * Math.sin(v);
+            let x2 = x/20;
+            let y2 = y/20;
+            let z2 = z/20;
             gl.color(x2 + 0.5, y2 + 0.5, z2 + 0.5, 1.0);
             gl.vertex(x2, y2, z2);
         }

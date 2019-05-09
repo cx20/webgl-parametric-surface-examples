@@ -1,5 +1,5 @@
 function sketchProc(p) {
-    var angle = 0.0;
+    let angle = 0.0;
 
     p.setup = function() {
         p.size(innerWidth,innerHeight, p.P3D);
@@ -22,10 +22,10 @@ function sketchProc(p) {
         // z = cos(u) * sin(v) * cos(v)
 
         p.beginShape(p.LINE_STRIP);
-        var ustep = Math.PI * 10 / 180;
-        var vstep = Math.PI * 10 / 180;
-        for (var v = 0; v <= 2 * Math.PI; v += vstep) {
-            for (var u = 0; u <= 2 * Math.PI; u += ustep) {
+        let ustep = Math.PI * 10 / 180;
+        let vstep = Math.PI * 10 / 180;
+        for (let v = 0; v <= 2 * Math.PI; v += vstep) {
+            for (let u = 0; u <= 2 * Math.PI; u += ustep) {
                 p.RomanSurface(u, v);
                 p.RomanSurface(u + ustep, v);
                 p.RomanSurface(u + ustep, v + vstep);
@@ -36,15 +36,15 @@ function sketchProc(p) {
     }
     
     p.RomanSurface = function(u, v) {
-        var x = Math.sin(u) * Math.cos(u) * Math.sin(v) * Math.sin(v);
-        var y = Math.sin(u) * Math.sin(v) * Math.cos(v);
-        var z = Math.cos(u) * Math.sin(v) * Math.cos(v);
+        let x = Math.sin(u) * Math.cos(u) * Math.sin(v) * Math.sin(v);
+        let y = Math.sin(u) * Math.sin(v) * Math.cos(v);
+        let z = Math.cos(u) * Math.sin(v) * Math.cos(v);
         p.stroke((x+0.5)*255, (y+0.5)*255, (z+0.5)*255);
         p.vertex(x, y, z);
     }
 }
 
 window.onload = function () {
-    var canvas = document.getElementById("canvas");
-    var myp = new Processing(canvas, sketchProc);
+    let canvas = document.getElementById("canvas");
+    let myp = new Processing(canvas, sketchProc);
 }

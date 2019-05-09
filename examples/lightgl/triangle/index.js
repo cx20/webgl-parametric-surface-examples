@@ -1,4 +1,4 @@
-var gl = GL.create();
+let gl = GL.create();
 
 gl.ondraw = function() {
     gl.clearColor(0.0, 0.0, 0.0, 1.0);

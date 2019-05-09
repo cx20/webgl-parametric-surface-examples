@@ -1,14 +1,15 @@
-var camera, scene, renderer;
-var mesh;
+let camera, scene, renderer;
+let mesh;
+let rad = 0.0;
 
-var WIDTH_SEGMENT =  32;
-var HEIGHT_SEGMENT = 32;
-var WIDTH_SIZE = 1.0 * 2 / WIDTH_SEGMENT;
-var HEIGHT_SIZE = 1.0 * 2 / WIDTH_SEGMENT;
+let WIDTH_SEGMENT =  32;
+let HEIGHT_SEGMENT = 32;
+let WIDTH_SIZE = 1.0 * 2 / WIDTH_SEGMENT;
+let HEIGHT_SIZE = 1.0 * 2 / WIDTH_SEGMENT;
 
-var geometry = new THREE.BufferGeometry();
-var positions = new Float32Array((WIDTH_SEGMENT + 1) * (HEIGHT_SEGMENT + 1) * 3);
-var colors = new Float32Array((WIDTH_SEGMENT + 1) * (HEIGHT_SEGMENT + 1) * 3);
+let geometry = new THREE.BufferGeometry();
+let positions = new Float32Array((WIDTH_SEGMENT + 1) * (HEIGHT_SEGMENT + 1) * 3);
+let colors = new Float32Array((WIDTH_SEGMENT + 1) * (HEIGHT_SEGMENT + 1) * 3);
 
 init();
 animate();
@@ -21,19 +22,19 @@ function init() {
 
     scene.add( new THREE.AmbientLight( 0xffffff ) );
 
-    var num = 16;
-    var i = 0;
-    for (var v = -num; v <= num; v++) {
-        for (var u = -num; u <= num; u++) {
-            var theta = Math.PI * v / num;
-            var z0 = u / num;
-            var r = 4 * Math.sqrt(1 - z0 * z0) * Math.pow(Math.sin(Math.abs(theta)), Math.abs(theta));
-            var x1 = r * Math.sin(theta);
-            var y1 = r * Math.cos(theta);
-            var z1 = z0 * 1.3;
-            var x2 = x1 / 8;
-            var y2 = y1 / 8;
-            var z2 = z1 / 8;
+    let num = 16;
+    let i = 0;
+    for (let v = -num; v <= num; v++) {
+        for (let u = -num; u <= num; u++) {
+            let theta = Math.PI * v / num;
+            let z0 = u / num;
+            let r = 4 * Math.sqrt(1 - z0 * z0) * Math.pow(Math.sin(Math.abs(theta)), Math.abs(theta));
+            let x1 = r * Math.sin(theta);
+            let y1 = r * Math.cos(theta);
+            let z1 = z0 * 1.3;
+            let x2 = x1 / 8;
+            let y2 = y1 / 8;
+            let z2 = z1 / 8;
             positions[i * 3 + 0] = x2;
             positions[i * 3 + 1] = y2;
             positions[i * 3 + 2] = z2;
@@ -46,14 +47,14 @@ function init() {
         }
     }
         
-    var indices = new Uint16Array(WIDTH_SEGMENT * HEIGHT_SEGMENT * 6);
+    let indices = new Uint16Array(WIDTH_SEGMENT * HEIGHT_SEGMENT * 6);
     i = 0;
-    for (var row = 0; row < HEIGHT_SEGMENT; row++) {
-        for (var col = 0; col < WIDTH_SEGMENT; col++) {
-            var a = (row + 1) * (WIDTH_SEGMENT + 1) + col;
-            var b = (row + 0) * (WIDTH_SEGMENT + 1) + col;
-            var c = (row + 0) * (WIDTH_SEGMENT + 1) + col + 1;
-            var d = (row + 1) * (WIDTH_SEGMENT + 1) + col + 1;
+    for (let row = 0; row < HEIGHT_SEGMENT; row++) {
+        for (let col = 0; col < WIDTH_SEGMENT; col++) {
+            let a = (row + 1) * (WIDTH_SEGMENT + 1) + col;
+            let b = (row + 0) * (WIDTH_SEGMENT + 1) + col;
+            let c = (row + 0) * (WIDTH_SEGMENT + 1) + col + 1;
+            let d = (row + 1) * (WIDTH_SEGMENT + 1) + col + 1;
             indices[i * 6 + 0] = b;
             indices[i * 6 + 1] = a;
             indices[i * 6 + 2] = c;
@@ -68,7 +69,7 @@ function init() {
     geometry.addAttribute('color', new THREE.BufferAttribute(colors, 3));
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     
-    var material = new THREE.MeshPhongMaterial( {
+    let material = new THREE.MeshPhongMaterial( {
         color: 0xffffff,
         flatShading: true,
         vertexColors: THREE.VertexColors,
@@ -93,7 +94,6 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-var rad = 0.0;
 function render() {
     rad += Math.PI * 1.0 / 180.0
     mesh.rotation.x = rad;
