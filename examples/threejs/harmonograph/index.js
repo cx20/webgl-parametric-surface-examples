@@ -8,7 +8,6 @@ let indices = new Uint16Array(MAX * 1);
 let line;
 let theta = 0;
 
-let p1 = 0;
 let A1 = 50, f1 = 2, p1 = 1/16, d1 = 0.02;
 let A2 = 50, f2 = 2, p2 = 3 / 2, d2 = 0.0315;
 let A3 = 50, f3 = 2, p3 = 13 / 15, d3 = 0.02;
