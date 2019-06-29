@@ -1,4 +1,4 @@
-let c, gl;
+ï»¿let c, gl;
 
 let aLoc = [];
 let uLoc = [];
@@ -61,7 +61,7 @@ function initShaders() {
 }
 
 function initBuffers() {
-    // 3ŸŒ³ƒŠƒT[ƒWƒ…‚ÌÀ•Wƒf[ƒ^‚ğ—pˆÓ
+    // 3æ¬¡å…ƒãƒªã‚µãƒ¼ã‚¸ãƒ¥ã®åº§æ¨™ãƒ‡ãƒ¼ã‚¿ã‚’ç”¨æ„
     //             1.0 y 
     //              ^  -1.0 
     //              | / z
@@ -116,7 +116,7 @@ function render() {
     gl.uniform1f(uLoc[2], time);
 
 
-    // uniform float f1`f4
+    // uniform float f1ï½f4
     f1 = (f1 + Math.random() / 40) % 10;
     f2 = (f2 + Math.random() / 40) % 10;
     f3 = (f3 + Math.random() / 40) % 10;

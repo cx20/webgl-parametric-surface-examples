@@ -1,4 +1,4 @@
-let c, gl;
+ï»¿let c, gl;
 let aLoc = [];
 let uLoc = [];
 
@@ -59,7 +59,7 @@ function initShaders() {
 }
 
 function initBuffers() {
-    // ³Œ·”g~—]Œ·”g‚ÌÀ•Wƒf[ƒ^‚ğ—pˆÓ
+    // æ­£å¼¦æ³¢Ã—ä½™å¼¦æ³¢ã®åº§æ¨™ãƒ‡ãƒ¼ã‚¿ã‚’ç”¨æ„
     //             1.0 y 
     //              ^  -1.0 
     //              | / z

@@ -1,4 +1,4 @@
-let c, gl;
+﻿let c, gl;
 let aLoc = [];
 let uLoc = [];
 
