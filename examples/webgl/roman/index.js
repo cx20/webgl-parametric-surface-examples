@@ -55,35 +55,6 @@ function initShaders() {
 }
 
 function initBuffers() {
-/*
-    // 3次元リサージュの座標データを用意
-    //             1.0 y 
-    //              ^  -1.0 
-    //              | / z
-    //              |/       x
-    // -1.0 -----------------> +1.0
-    //            / |
-    //      +1.0 /  |
-    //           -1.0
-    // 
-    const MAX = 360;
-    const A = 100.0;
-    const B = 99.0;
-    const C = 1.0;
-    const alpha = Math.PI/4;
-    const beta  = Math.PI/3;
-    const gamma = 0; // Math.PI/2;
-    for ( let i = 0; i <= MAX; i += 0.1 ) {
-        let x = 0.5 * Math.sin(2 * Math.PI * i / MAX * A + alpha);
-        let y = 0.5 * Math.sin(2 * Math.PI * i / MAX * B + beta);
-        let z = 0.5 * Math.sin(2 * Math.PI * i / MAX * C + gamma);
-        let r = x + 0.5;
-        let g = y + 0.5;
-        let b = z + 0.5;
-        positions = positions.concat([x, y, z]);
-        colors = colors.concat([r, g, b])
-    }
-*/
     // Prepare coordinate data of Roman surface
 
     // x = sin(u) * cos(u) * sin(v) * sin(v)
