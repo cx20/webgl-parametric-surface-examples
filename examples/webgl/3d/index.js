@@ -71,7 +71,7 @@ function initBuffers() {
     for (let j = -10; j < 10; j += 0.2) {
         for (let i = -10; i < 10; i += 0.2) {
             let x = i;
-            let y = Math.sin(Math.sqrt(i*i+j*j))/Math.sqrt(i*i+j*j);
+            let y = Math.sin(Math.sqrt(i * i + j * j))/Math.sqrt(i * i + j * j);
             let z = j;
             positions = positions.concat([x/10, y/5, z/10]);
             colors = colors.concat([x/10+0.5, y+0.5, z/10+0.5, 1.0]);
@@ -132,6 +132,9 @@ function draw() {
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(positions));
     
+    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(colors));
+
     //gl.drawArrays(gl.LINE_STRIP, 0, positions.length / 3);
     gl.drawArrays(gl.POINTS, 0, positions.length / 3);
     gl.flush();
