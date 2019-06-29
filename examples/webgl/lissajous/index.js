@@ -28,16 +28,6 @@ function initWebGL() {
     window.addEventListener("resize", function(){
         resizeCanvas();
     });
-
-    eye = vec3.create();
-    center = vec3.create();
-    up = vec3.create();
-    vec3.set(eye, 0, 50, 200);
-    vec3.set(center, 0, 0, 0);
-    vec3.set(up, 0, 1, 0);
-    view = mat4.create();
-    mat4.lookAt(view, eye, center, up);
-    mat4.multiply(pMatrix, pMatrix, view);
 }
 
 function resizeCanvas() {
