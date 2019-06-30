@@ -55,7 +55,6 @@
     mesh.material.backFaceCulling = false;
     
     scene.registerBeforeRender(function () {
-        draw();
         //mesh.rotation.x = theta;
         //mesh.rotation.y = theta;
         //mesh.rotation.z = theta;
@@ -63,34 +62,6 @@
         mesh.rotate(BABYLON.Axis.Y, Math.PI * 1.0 / 180.0, BABYLON.Space.LOCAL);
         mesh.rotate(BABYLON.Axis.Z, Math.PI * 1.0 / 180.0, BABYLON.Space.LOCAL);
     });
-    
-    function draw() {
-        let positions = mesh.getVerticesData(BABYLON.VertexBuffer.PositionKind);
-        let colors = mesh.getVerticesData(BABYLON.VertexBuffer.ColorKind);
-        theta += Math.PI * 1/180;
-        let k = 0;
-        for (let j = -10; j < 10; j += 0.2) {
-            for (let i = -10; i < 10; i += 0.2) {
-                let x = i;
-                let y = Math.sin(Math.sqrt(i * i + j * j) + theta) / Math.sqrt(i * i + j * j);
-                let z = j;
-                let x2 = x / 10;
-                let y2 = y / 2;
-                let z2 = z / 10;
-                positions[k * 3 + 0] = x2;
-                positions[k * 3 + 1] = y2;
-                positions[k * 3 + 2] = z2;
-                colors[k * 4 + 0] = x2 + 0.5;
-                colors[k * 4 + 1] = y2 + 0.5;
-                colors[k * 4 + 2] = z2 + 0.5;
-                colors[k * 4 + 3] = 1.0;
-                k++;
-            }
-        }
-
-        mesh.updateVerticesData(BABYLON.VertexBuffer.PositionKind, positions);
-        mesh.updateVerticesData(BABYLON.VertexBuffer.ColorKind, colors);
-    }
     
     return scene;
 };
