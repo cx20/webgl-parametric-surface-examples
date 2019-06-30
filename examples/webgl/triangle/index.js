@@ -86,7 +86,7 @@ function render(){
 
     mat4.perspective(pMatrix, 45, window.innerWidth / window.innerHeight, 0.1, 100.0);
     mat4.identity(mvMatrix);
-    var translation = vec3.create();
+    let translation = vec3.create();
     vec3.set(translation, 0.0, 0.0, -2.0);
     mat4.translate(mvMatrix, mvMatrix, translation);
     mat4.rotate(mvMatrix, mvMatrix, rad, [0, 0, 0]);
