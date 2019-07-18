@@ -17,7 +17,7 @@ let createScene = function (engine) {
     mesh.color = new BABYLON.Color3(0, 0, 1);
 
     scene.registerBeforeRender(function () {
-        //scene.activeCamera.alpha += 0.03;
+        scene.activeCamera.alpha += 0.01;
     });
     
     return scene;
