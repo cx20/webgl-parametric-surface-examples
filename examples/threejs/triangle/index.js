@@ -2,6 +2,7 @@ let container;
 let camera, scene, renderer;
 let mesh;
 let theta = 0;
+let rad = 0.0;
 
 init();
 animate();
@@ -48,5 +49,7 @@ function animate() {
 }
 
 function render() {
+    rad += Math.PI * 1.0 / 180.0
+    mesh.rotation.y = rad;
     renderer.render(scene, camera);
 }
