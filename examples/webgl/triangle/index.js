@@ -89,7 +89,7 @@ function render(){
     let translation = vec3.create();
     vec3.set(translation, 0.0, 0.0, -2.0);
     mat4.translate(mvMatrix, mvMatrix, translation);
-    mat4.rotate(mvMatrix, mvMatrix, rad, [0, 0, 0]);
+    mat4.rotate(mvMatrix, mvMatrix, rad, [0, 1, 0]);
 
     gl.uniformMatrix4fv(uLoc[0], false, pMatrix);
     gl.uniformMatrix4fv(uLoc[1], false, mvMatrix);
