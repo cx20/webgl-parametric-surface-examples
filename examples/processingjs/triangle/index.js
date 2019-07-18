@@ -12,6 +12,7 @@ function sketchProc(p) {
         p.background(0, 0, 0);
         p.translate(p.width/2.0, p.height/2.0, 0);
         p.rotate(Math.PI);
+        p.rotateY(angle);
         p.scale(Math.min(p.width/2.0, p.height/2.0));
 
         p.beginShape(p.LINE_STRIP);
