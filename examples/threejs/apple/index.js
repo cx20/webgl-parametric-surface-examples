@@ -68,12 +68,16 @@ function init() {
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     
+/*
     let material = new THREE.MeshPhongMaterial( {
         color: 0xffffff,
         flatShading: true,
         vertexColors: THREE.VertexColors,
         shininess: 0
     } );
+*/
+    //let material = new THREE.MeshPhongMaterial({ vertexColors: THREE.VertexColors }); // TODO: Use MeshPhongMaterial may flicker, so investigation is required
+    let material = new THREE.MeshBasicMaterial({ vertexColors: THREE.VertexColors });
 
     //mesh = new THREE.Mesh(geometry, material);
     mesh = new THREE.Line(geometry, material);
