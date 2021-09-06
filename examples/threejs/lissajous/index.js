@@ -54,13 +54,14 @@ function init() {
     container.appendChild(renderer.domElement);
 }
 
-function animate() {
+function animate(timestamp) {
+    render(timestamp);
     requestAnimationFrame(animate);
-    render();
 }
 
-function render() {
-    rad += Math.PI * 1.0 / 180.0
+function render(timestamp) {
+    //rad += Math.PI * 1.0 / 180.0
+    rad = timestamp / 1000; // Seconds since the first requestAnimationFrame (ms)
     mesh.rotation.y = rad;
     renderer.render(scene, camera);
 }

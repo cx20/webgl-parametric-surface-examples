@@ -74,12 +74,12 @@ function drawHarmonograph()
     line.geometry.attributes.position.needsUpdate = true; 
 }
 
-function animate() {
+function animate(timestamp) {
+    render(timestamp);
     requestAnimationFrame(animate);
-    render();
 }
 
-function render() {
+function render(timestamp) {
     randomHarmonograph();
 
     camera.lookAt( scene.position );

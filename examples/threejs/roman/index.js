@@ -95,13 +95,14 @@ function RomanSurface(i, u, v) {
     colors[i * 3 + 2] = z + 0.5;
 }
 
-function animate() {
-    render();
+function animate(timestamp) {
+    render(timestamp);
     requestAnimationFrame(animate);
 }
 
-function render() {
-    rad += Math.PI * 1.0 / 180.0
+function render(timestamp) {
+    //rad += Math.PI * 1.0 / 180.0
+    rad = timestamp / 1000; // Seconds since the first requestAnimationFrame (ms)
     mesh.rotation.z = rad;
     renderer.render(scene, camera);
 }
