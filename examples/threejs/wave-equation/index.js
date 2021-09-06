@@ -8,7 +8,7 @@
 let N = 50;
 let l = 2.0;
 
-let dt = 0.1; // delta time
+let dt = 0.1 * 0.4; // delta time
 let dd = 1.0; // space spacing
 let v = 4; // velocity
 
@@ -111,12 +111,12 @@ function init() {
     container.appendChild(renderer.domElement);
 }
 
-function animate() {
+function animate(timestamp) {
+    render(timestamp);
     requestAnimationFrame(animate);
-    render();
 }
 
-function render() {
+function render(timestamp) {
     for (let i = 1; i <= N - 1; i++) {
         for (let j = 1; j <= N - 1; j++) {
             f[2][i][j] = 2.0 * f[1][i][j] - f[0][i][j] + v * v * dt * dt / (dd * dd) * (f[1][i + 1][j] + f[1][i - 1][j] + f[1][i][j + 1] + f[1][i][j - 1] - 4.0 * f[1][i][j]);
@@ -171,7 +171,8 @@ function render() {
 
     mesh.geometry.attributes.position.needsUpdate = true; 
 
-    rad += Math.PI * 1.0 / 180.0
+    //rad += Math.PI * 1.0 / 180.0
+    rad = timestamp / 1000; // Seconds since the first requestAnimationFrame (ms)
     mesh.rotation.z = rad;
     renderer.render(scene, camera);
 }
