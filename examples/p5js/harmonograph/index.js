@@ -36,14 +36,15 @@ function drawHarmonograph()
     // y = A3 * sin(f3 * t + p3) * exp(-d3 * t) + A4 * sin(f4 * t + p4) * exp(-d4 * t)
     let x, y, z;
     let t = 0;
-    beginShape(TRIANGLE_STRIP);
+    beginShape(POINTS);
+    strokeWeight(2.0);
     for (let i = 0; i < MAX; i++) {
         x = A1 * Math.sin(f1 * t + Math.PI * p1) * Math.exp(-d1 * t) + A2 * Math.sin(f2 * t + Math.PI * p2) * Math.exp(-d2 * t);
         y = A3 * Math.sin(f3 * t + Math.PI * p3) * Math.exp(-d3 * t) + A4 * Math.sin(f4 * t + Math.PI * p4) * Math.exp(-d4 * t);
         z = A1 * Math.cos(f1 * t + Math.PI * p1) * Math.exp(-d1 * t) + A2 * Math.cos(f2 * t + Math.PI * p2) * Math.exp(-d2 * t);
-        fill((x+0.5)*255, (y+0.5)*255, (z+0.5)*255);
+        stroke((x+0.5)*255, (y+0.5)*255, (z+0.5)*255);
         vertex(x, y, z);
-        t += 0.02;
+        t += 0.01;
     }
     endShape();
 }
