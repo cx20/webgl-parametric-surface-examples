@@ -89,9 +89,10 @@ function initBuffers() {
     gl.vertexAttribPointer(aLoc[1], 3, gl.FLOAT, false, 0, 0);
 }
 
-function render(){
-    rad += Math.PI * 1.0 / 180.0;
-
+function render(timestamp) {
+    //rad += Math.PI * 1.0 / 180.0;
+    rad = timestamp / 1000; // Seconds since the first requestAnimationFrame (ms)
+ 
     mat4.perspective(pMatrix, 45, window.innerWidth / window.innerHeight, 0.1, 1000.0);
     mat4.identity(mvMatrix);
     let translation = vec3.create();
@@ -102,14 +103,15 @@ function render(){
     gl.uniformMatrix4fv(uLoc[0], false, pMatrix);
     gl.uniformMatrix4fv(uLoc[1], false, mvMatrix);
     
-    draw();
+    draw(timestamp);
 
     requestAnimationFrame(render);
 }
 
-function draw() {
-    theta += Math.PI * 1/180;
-    
+function draw(timestamp) {
+    //theta += Math.PI * 1/180;
+    theta = timestamp / 1000; // Seconds since the first requestAnimationFrame (ms)
+
     let k = 0;
     for (let j = -10; j < 10; j += 0.2) {
         for (let i = -10; i < 10; i += 0.2) {
