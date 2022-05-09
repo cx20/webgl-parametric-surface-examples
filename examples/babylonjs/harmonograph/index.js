@@ -1,37 +1,27 @@
+const canvas = document.querySelector("#renderCanvas");
+const engine = new BABYLON.Engine(canvas, true);
+
 const MAX = 360;
-const R = 100;
 
-const alpha = Math.PI/4;
-const beta  = Math.PI/3;
-const gamma = 0; // Math.PI/2;
-
-let theta = 0.0;
-let mesh;
-
-let A1 = 50, f1 = 2, p1 = 1/16, d1 = 0.02;
-let A2 = 50, f2 = 2, p2 = 3 / 2, d2 = 0.0315;
-let A3 = 50, f3 = 2, p3 = 13 / 15, d3 = 0.02;
-let A4 = 50, f4 = 2, p4 = 1, d4 = 0.02;
-
-let createScene = function (engine) {
-    let scene = new BABYLON.Scene(engine);
-    let camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, -300), scene);
+const createScene = function () {
+    const scene = new BABYLON.Scene(engine);
+    const camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, -300), scene);
     scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
-    let positions = [];
-    let colors = [];
-    let indices = [];
+    const positions = [];
+    const colors = [];
+    const indices = [];
     let idx = 0;
-    let color = new BABYLON.Color4(0, 0, 0, 1);
+    const color = new BABYLON.Color3(0, 0, 0);
     for ( let t = 0; t <= 200; t += 0.01 ) {
         positions.push(0, 0, 0);
-        BABYLON.ColorCurves.fromHSBToRef((t/200 * 360 | 0), 80, 50, color);
+        BABYLON.Color3.HSVtoRGBToRef((t/200 * 360 | 0), 1, 1, color);
         colors.push(color.r, color.g, color.b, 1);
         indices.push(idx++);
     }
 
-    let mesh = new BABYLON.Mesh("mesh", scene);
-    let vertexData = new BABYLON.VertexData();
+    const mesh = new BABYLON.Mesh("mesh", scene);
+    const vertexData = new BABYLON.VertexData();
     
     vertexData.positions = positions;
     vertexData.indices = indices;
@@ -39,7 +29,7 @@ let createScene = function (engine) {
     
     vertexData.applyToMesh(mesh, true); // Mesh ‚ðXV‰Â”\‚Æ‚µ‚Äì¬‚·‚é
 
-    let material = new BABYLON.ShaderMaterial("material", scene, {
+    const material = new BABYLON.ShaderMaterial("material", scene, {
         vertexElement: "vs",
         fragmentElement: "fs",
     }, {
@@ -54,6 +44,19 @@ let createScene = function (engine) {
         randomHarmonograph();
     });
                          
+    const R = 100;
+
+    const alpha = Math.PI/4;
+    const beta  = Math.PI/3;
+    const gamma = 0; // Math.PI/2;
+
+    const theta = 0.0;
+
+    let A1 = 50, f1 = 2, p1 = 1/16, d1 = 0.02;
+    let A2 = 50, f2 = 2, p2 = 3 / 2, d2 = 0.0315;
+    let A3 = 50, f3 = 2, p3 = 13 / 15, d3 = 0.02;
+    let A4 = 50, f4 = 2, p4 = 1, d4 = 0.02;
+
     function randomHarmonograph() {
         f1 = (f1 + Math.random() / 40) % 10;
         f2 = (f2 + Math.random() / 40) % 10;
@@ -66,12 +69,12 @@ let createScene = function (engine) {
     
     function drawHarmonograph()
     {
-        let positions = mesh.getVerticesData(BABYLON.VertexBuffer.PositionKind);
+        const positions = mesh.getVerticesData(BABYLON.VertexBuffer.PositionKind);
         for (let i = 0; i < positions.length; i += 3) {
-            let t = i / 200;
-            let x = A1 * Math.sin(f1 * t + Math.PI * p1) * Math.exp(-d1 * t) + A2 * Math.sin(f2 * t + Math.PI * p2) * Math.exp(-d2 * t);
-            let y = A3 * Math.sin(f3 * t + Math.PI * p3) * Math.exp(-d3 * t) + A4 * Math.sin(f4 * t + Math.PI * p4) * Math.exp(-d4 * t);
-            let z = A1 * Math.cos(f1 * t + Math.PI * p1) * Math.exp(-d1 * t) + A2 * Math.cos(f2 * t + Math.PI * p2) * Math.exp(-d2 * t);
+            const t = i / 200;
+            const x = A1 * Math.sin(f1 * t + Math.PI * p1) * Math.exp(-d1 * t) + A2 * Math.sin(f2 * t + Math.PI * p2) * Math.exp(-d2 * t);
+            const y = A3 * Math.sin(f3 * t + Math.PI * p3) * Math.exp(-d3 * t) + A4 * Math.sin(f4 * t + Math.PI * p4) * Math.exp(-d4 * t);
+            const z = A1 * Math.cos(f1 * t + Math.PI * p1) * Math.exp(-d1 * t) + A2 * Math.cos(f2 * t + Math.PI * p2) * Math.exp(-d2 * t);
     
             positions[i+0] = x;
             positions[i+1] = y;
@@ -84,9 +87,7 @@ let createScene = function (engine) {
     return scene;
 };
 
-let canvas = document.querySelector("#renderCanvas");
-let engine = new BABYLON.Engine(canvas, true);
-let scene = createScene( engine );
+const scene = createScene();
 
 engine.runRenderLoop(function () {
     scene.render();

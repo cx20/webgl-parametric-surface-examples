@@ -3,25 +3,25 @@
 ////////////////////////////////////////////////////////////////////
 
 //Size of two-dimensional square lattice
-//let N = 100;
-//let l = 1.0;
-let N = 50;
-let l = 2.0;
+//const N = 100;
+//const l = 1.0;
+const N = 100;
+const l = 2;
 
-let dt = 0.1; // delta time
-let dd = 1.0; // space spacing
-let v = 4; // velocity
+const dt = 0.1; // delta time
+const dd = 1.0; // space spacing
+const v = 2; // velocity
 
 // Set boundary condition
-let BC = "Neumann"; //or "Dirichlet"
+const BC = "Neumann"; //or "Dirichlet"
 
-let peakPosition = {
+const peakPosition = {
     x: 0,
     y: 0,
     z: 75,
     sigma2: 50
 };
-let peakPosition_bound = {
+const peakPosition_bound = {
     x_min: -50,
     x_max: 50,
     y_min: -50,
@@ -32,23 +32,23 @@ let peakPosition_bound = {
     sigma2_max: 100
 };
 
-let Tn = 3;
-let f = new Array(Tn);
+const Tn = 3;
+const f = new Array(Tn);
 
 function initCondition(parameter) {
-    let x0 = parameter.x;
-    let y0 = parameter.y;
-    let z0 = parameter.z;
-    let sigma2 = parameter.sigma2;
+    const x0 = parameter.x;
+    const y0 = parameter.y;
+    const z0 = parameter.z;
+    const sigma2 = parameter.sigma2;
     for (let t = 0; t < Tn; t++) {
         f[t] = new Array(N);
         for (i = 0; i <= N; i++) {
             f[t][i] = new Array(N);
             for (j = 0; j <= N; j++) {
-                let x = (-N / 2 + i) * l;
-                let y = (-N / 2 + j) * l;
+                const x = (-N / 2 + i) * l;
+                const y = (-N / 2 + j) * l;
                 // initial conditions
-                let z = z0 * Math.exp(-(Math.pow(x - x0, 2) + Math.pow(y - y0, 2)) / (2 * sigma2));
+                const z = z0 * Math.exp(-(Math.pow(x - x0, 2) + Math.pow(y - y0, 2)) / (2 * sigma2));
                 f[0][i][j] = z;
             }
         }
@@ -59,7 +59,7 @@ function initCondition(parameter) {
         }
     }
     if (BC == "Dirichlet") {
-        // Dirichlet boundary condition
+        // Dirichconst boundary condition
         for (let i = 0; i <= N; i++) {
             f[1][i][0] = f[1][i][N] = f[1][0][i] = f[1][N][i] = 0.0; // boundary condition
         }
@@ -79,18 +79,18 @@ function initCondition(parameter) {
     }
 }
 
-let createScene = function (engine) {
+const createScene = function () {
     initCondition(peakPosition);
     
     let theta = 0;
 
-    let scene = new BABYLON.Scene(engine);
-    let camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0.5, -2.5), scene);
+    const scene = new BABYLON.Scene(engine);
+    const camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0.5, -2.5), scene);
     scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
-    let positions = [];
-    let colors = [];
-    let indices = [];
+    const positions = [];
+    const colors = [];
+    const indices = [];
     let idx = 0;
     for (i = 0; i <= N; i++) {
         for (j = 0; j <= N; j++) {
@@ -100,15 +100,15 @@ let createScene = function (engine) {
         }
     }
         
-    let mesh = new BABYLON.Mesh("mesh", scene);
-    let vertexData = new BABYLON.VertexData();
+    const mesh = new BABYLON.Mesh("mesh", scene);
+    const vertexData = new BABYLON.VertexData();
     
     vertexData.positions = positions;
     vertexData.indices = indices;
     vertexData.colors = colors;
     vertexData.applyToMesh(mesh, true);
 
-    let material = new BABYLON.ShaderMaterial("material", scene, {
+    const material = new BABYLON.ShaderMaterial("material", scene, {
         vertexElement: "vs",
         fragmentElement: "fs",
     }, {
@@ -125,10 +125,10 @@ let createScene = function (engine) {
     });
                          
     function draw() {
-        let positions = mesh.getVerticesData(BABYLON.VertexBuffer.PositionKind);
-        let colors = mesh.getVerticesData(BABYLON.VertexBuffer.ColorKind);
+        const positions = mesh.getVerticesData(BABYLON.VertexBuffer.PositionKind);
+        const colors = mesh.getVerticesData(BABYLON.VertexBuffer.ColorKind);
 
-        theta += Math.PI * 1/180;
+        theta += Math.PI * 1/180* scene.getAnimationRatio();
         
         for (let i = 1; i <= N - 1; i++) {
             for (let j = 1; j <= N - 1; j++) {
@@ -136,7 +136,7 @@ let createScene = function (engine) {
             }
         }
         if (BC == "Dirichlet") {
-            // Dirichlet boundary condition
+            // Dirichconst boundary condition
             for (let i = 0; i <= N; i++) {
                 f[2][i][0] = f[2][i][N] = f[2][0][i] = f[2][N][i] = 0.0; // boundary condition
             }
@@ -166,9 +166,9 @@ let createScene = function (engine) {
         let k = 0;
         for (i = 0; i <= N; i++) {
             for (j = 0; j <= N; j++) {
-                let x = (-N / 2 + i) * l * 0.02;
-                let y = f[1][i][j] * 0.02;
-                let z = (-N / 2 + j) * l * 0.02;
+                const x = (-N / 2 + i) * l * 0.02;
+                const y = f[1][i][j] * 0.02;
+                const z = (-N / 2 + j) * l * 0.02;
 
                 positions[k * 3 + 0] = x;
                 positions[k * 3 + 1] = y;
@@ -189,9 +189,9 @@ let createScene = function (engine) {
     return scene;
 };
 
-let canvas = document.querySelector("#renderCanvas");
-let engine = new BABYLON.Engine(canvas, true);
-let scene = createScene( engine );
+const canvas = document.querySelector("#renderCanvas");
+const engine = new BABYLON.Engine(canvas, true);
+const scene = createScene( engine );
 
 engine.runRenderLoop(function () {
     scene.render();
