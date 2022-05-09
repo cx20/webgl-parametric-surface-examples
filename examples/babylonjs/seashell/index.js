@@ -1,11 +1,14 @@
-﻿let createScene = function (engine) {
-    let scene = new BABYLON.Scene(engine);
-    let camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0.0, -2.5), scene);
+﻿const canvas = document.querySelector("#renderCanvas");
+const engine = new BABYLON.Engine(canvas, true);
+
+const createScene = function () {
+    const scene = new BABYLON.Scene(engine);
+    const camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0.0, -2.5), scene);
     scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
-    let positions = [];
-    let colors = [];
-    let indices = [];
+    const positions = [];
+    const colors = [];
+    const indices = [];
     let idx = 0;
     let theta = 0.0;
 
@@ -19,12 +22,12 @@
     // c: determines how much the shell overlaps with itself
     // n: the number of spirals in the shell
 
-    let ustep = Math.PI * 5 / 180;
-    let vstep = Math.PI * 5 / 180;
-    let a = 0.2;
-    let b = 0.6;
-    let c = 0.2;
-    let n = 2.0;
+    const ustep = Math.PI * 5 / 180;
+    const vstep = Math.PI * 5 / 180;
+    const a = 0.2;
+    const b = 0.6;
+    const c = 0.2;
+    const n = 2.0;
     for (let v = 0; v <= 2 * Math.PI; v += vstep) {
         for (let u = 0; u <= 2 * Math.PI; u += ustep) {
             x = (a * (1 - v / (2 * Math.PI)) * (1 + Math.cos(u)) + c) * Math.cos(n * v);
@@ -36,15 +39,15 @@
         }
     }
     
-    let mesh = new BABYLON.Mesh("mesh", scene);
-    let vertexData = new BABYLON.VertexData();
+    const mesh = new BABYLON.Mesh("mesh", scene);
+    const vertexData = new BABYLON.VertexData();
     
     vertexData.positions = positions;
     vertexData.indices = indices;
     vertexData.colors = colors;
     vertexData.applyToMesh(mesh, true);
 
-    let material = new BABYLON.ShaderMaterial("material", scene, {
+    const material = new BABYLON.ShaderMaterial("material", scene, {
         vertexElement: "vs",
         fragmentElement: "fs",
     }, {
@@ -58,14 +61,13 @@
     
     scene.registerBeforeRender(function () {
         mesh.rotation.y = theta;
+        theta += 0.03 * scene.getAnimationRatio();
     });
     
     return scene;
 };
 
-let canvas = document.querySelector("#renderCanvas");
-let engine = new BABYLON.Engine(canvas, true);
-let scene = createScene( engine );
+const scene = createScene();
 
 engine.runRenderLoop(function () {
     scene.render();

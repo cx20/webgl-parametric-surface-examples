@@ -1,23 +1,16 @@
-﻿const MAX = 360;
-const R = 100;
+﻿const canvas = document.querySelector("#renderCanvas");
+const engine = new BABYLON.Engine(canvas, true);
 
-const alpha = Math.PI/4;
-const beta  = Math.PI/3;
-const gamma = 0; // Math.PI/2;
-
-let theta = 0.0;
-let mesh;
-
-let createScene = function (engine) {
-    let scene = new BABYLON.Scene(engine);
-    let camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0.5, -2.5), scene);
+const createScene = function () {
+    const scene = new BABYLON.Scene(engine);
+    const camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0.5, -2.5), scene);
     scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
-    let positions = [];
-    let colors = [];
-    let indices = [];
+    const positions = [];
+    const colors = [];
+    const indices = [];
     let idx = 0;
-    let color = new BABYLON.Color4(0, 0, 0, 1);
+    const color = new BABYLON.Color4(0, 0, 0, 1);
     for (let j = -10; j < 10; j += 0.2) {
         for (let i = -10; i < 10; i += 0.2) {
             positions.push(0, 0, 0);
@@ -26,15 +19,15 @@ let createScene = function (engine) {
         }
     }
     
-    let mesh = new BABYLON.Mesh("mesh", scene);
-    let vertexData = new BABYLON.VertexData();
+    const mesh = new BABYLON.Mesh("mesh", scene);
+    const vertexData = new BABYLON.VertexData();
     
     vertexData.positions = positions;
     vertexData.indices = indices;
     vertexData.colors = colors;
     vertexData.applyToMesh(mesh, true);
 
-    let material = new BABYLON.ShaderMaterial("material", scene, {
+    const material = new BABYLON.ShaderMaterial("material", scene, {
         vertexElement: "vs",
         fragmentElement: "fs",
     }, {
@@ -50,19 +43,28 @@ let createScene = function (engine) {
         mesh.rotation.y = theta;
     });
                          
+    const MAX = 360;
+    const R = 100;
+
+    const alpha = Math.PI/4;
+    const beta  = Math.PI/3;
+    const gamma = 0; // Math.PI/2;
+
+    let theta = 0.0;
+
     function draw() {
-        let positions = mesh.getVerticesData(BABYLON.VertexBuffer.PositionKind);
-        let colors = mesh.getVerticesData(BABYLON.VertexBuffer.ColorKind);
-        theta += Math.PI * 1/180;
+        const positions = mesh.getVerticesData(BABYLON.VertexBuffer.PositionKind);
+        const colors = mesh.getVerticesData(BABYLON.VertexBuffer.ColorKind);
+        theta += Math.PI * 1/180 * scene.getAnimationRatio();
         let k = 0;
         for (let j = -10; j < 10; j += 0.2) {
             for (let i = -10; i < 10; i += 0.2) {
-                let x = i;
-                let y = Math.sin(Math.sqrt(i * i + j * j) + theta) / Math.sqrt(i * i + j * j);
-                let z = j;
-                let x2 = x / 10;
-                let y2 = y / 2;
-                let z2 = z / 10;
+                const x = i;
+                const y = Math.sin(Math.sqrt(i * i + j * j) + theta) / Math.sqrt(i * i + j * j);
+                const z = j;
+                const x2 = x / 10;
+                const y2 = y / 2;
+                const z2 = z / 10;
                 positions[k * 3 + 0] = x2;
                 positions[k * 3 + 1] = y2;
                 positions[k * 3 + 2] = z2;
@@ -81,9 +83,7 @@ let createScene = function (engine) {
     return scene;
 };
 
-let canvas = document.querySelector("#renderCanvas");
-let engine = new BABYLON.Engine(canvas, true);
-let scene = createScene( engine );
+const scene = createScene();
 
 engine.runRenderLoop(function () {
     scene.render();
