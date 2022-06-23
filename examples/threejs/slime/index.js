@@ -68,16 +68,16 @@ function init() {
         }
     }
     
-    // attributes��ǉ�
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    // attributes
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     
     let material = new THREE.MeshPhongMaterial( {
         side: THREE.DoubleSide, 
         color: 0xffffff,
         flatShading: true,
-        vertexColors: THREE.VertexColors,
+        vertexColors: true,
         shininess: 0
     } );
 

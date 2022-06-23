@@ -41,11 +41,11 @@ function init() {
         }
     }
 
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
     
-    //let material = new THREE.PointsMaterial( { size: 1.0, vertexColors: THREE.VertexColors } );
-    let material = new THREE.PointsMaterial( { size: 0.05, vertexColors: THREE.VertexColors } );
+    //let material = new THREE.PointsMaterial( { size: 1.0, vertexColors: true} );
+    let material = new THREE.PointsMaterial( { size: 0.05, vertexColors: true} );
 
     mesh = new THREE.Points( geometry, material );
 

@@ -27,11 +27,11 @@ function init() {
     ]);
 
     let geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
     
     let material = new THREE.LineBasicMaterial({
-        vertexColors: THREE.VertexColors
+        vertexColors: true
     });
     mesh = new THREE.Line(geometry, material, THREE.LineStrip);
 

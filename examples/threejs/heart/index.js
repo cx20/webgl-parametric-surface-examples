@@ -65,8 +65,8 @@ function init() {
         }
     }
     
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     
 /*
@@ -77,8 +77,8 @@ function init() {
         shininess: 0
     } );
 */
-    //let material = new THREE.MeshPhongMaterial({ vertexColors: THREE.VertexColors }); // TODO: Use MeshPhongMaterial may flicker, so investigation is required
-    let material = new THREE.MeshBasicMaterial({ vertexColors: THREE.VertexColors });
+    //let material = new THREE.MeshPhongMaterial({ vertexColors: true}); // TODO: Use MeshPhongMaterial may flicker, so investigation is required
+    let material = new THREE.MeshBasicMaterial({ vertexColors: true});
 
     //mesh = new THREE.Mesh(geometry, material);
     mesh = new THREE.Line(geometry, material);

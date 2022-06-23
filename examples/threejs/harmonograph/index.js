@@ -33,11 +33,11 @@ function initHarmonograph()
     for (let i = 0; i < MAX; i++) {
         indices[i] = i;
     }
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
 
-    let material = new THREE.LineBasicMaterial({vertexColors: THREE.VertexColors});
+    let material = new THREE.LineBasicMaterial({vertexColors: true});
     line = new THREE.Line(geometry, material, THREE.LineStrip);
     scene.add(line);
 }

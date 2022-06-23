@@ -37,12 +37,12 @@ function init() {
         indices[i] = i;
     }
     
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     
     let material = new THREE.LineBasicMaterial({
-        vertexColors: THREE.VertexColors
+        vertexColors: true
     });
     mesh = new THREE.Line(geometry, material, THREE.LineStrip);
 
