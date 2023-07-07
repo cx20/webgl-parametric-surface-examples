@@ -1,4 +1,7 @@
+import * as THREE from 'three';
+
 let camera, scene, renderer;
+let container;
 let mesh;
 let rad = 0.0;
 
