@@ -3,10 +3,18 @@
 <head>
   <title>Apple surface Using three.js</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://cx20.github.io/gltf-test/libs/three.js/r144/build/three.js"></script>
 </head>
 <body>
+<script type="importmap">
+{
+	"imports": {
+		"three": "https://cx20.github.io/gltf-test/libs/three.js/r154/build/three.module.js"
+	}
+}
+</script>
+
 <div id="container"></div>
-<script src="index.js"></script>
+
+<script type="module" src="index.js"></script>
 </body>
 </html>

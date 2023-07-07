@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 let container;
 let camera, scene, renderer;
 let mesh;

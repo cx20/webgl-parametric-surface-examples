@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 let container;
 let camera, scene, renderer;
 let mesh;
@@ -32,9 +34,9 @@ function init() {
     let i = 0;
     for (let v = 0; v <= 2 * Math.PI; v += vstep) {
         for (let u = 0; u <= 2 * Math.PI; u += ustep) {
-            x = (a * (1 - v / (2 * Math.PI)) * (1 + Math.cos(u)) + c) * Math.cos(n * v);
-            y = (a * (1 - v / (2 * Math.PI)) * (1 + Math.cos(u)) + c) * Math.sin(n * v);
-            z = b * v / (2 * Math.PI) + a * (1 - v / (2 * Math.PI)) * Math.sin(u);
+            let x = (a * (1 - v / (2 * Math.PI)) * (1 + Math.cos(u)) + c) * Math.cos(n * v);
+            let y = (a * (1 - v / (2 * Math.PI)) * (1 + Math.cos(u)) + c) * Math.sin(n * v);
+            let z = b * v / (2 * Math.PI) + a * (1 - v / (2 * Math.PI)) * Math.sin(u);
             positions[i * 3 + 0] = x;
             positions[i * 3 + 1] = y;
             positions[i * 3 + 2] = z;
